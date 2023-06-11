@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getAllDogs = async (req, res) => {
-  const pageNumber = req.params.pageNumber ? req.params.pageNumber : 213
+  const pageNumber = req.params.pageNumber ? req.params.pageNumber : 210
 
 
     req.params = {

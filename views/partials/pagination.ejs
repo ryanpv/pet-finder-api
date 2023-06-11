@@ -1,0 +1,9 @@
+<div class="btn-group justify-content-right" role="group" aria-label="Basic example">
+  <form action="/dogs-for-adoption/all-dogs/paginate" method="POST">
+    <button name="previousPage" value=<%= data.pagination._links ? data.pagination._links.previous.href : null %> class="btn btn-secondary">Previous</button>
+  </form>
+  <button disabled><%= `Page: ${ data.pagination.current_page } / ${ data.pagination.total_pages }` %></button>
+  <form action="/dogs-for-adoption/all-dogs/paginate" method="POST">
+    <button name="nextPage" value=<%= data.pagination._links && data.pagination._links.next ? data.pagination._links.next.href : null %> class="btn btn-secondary">Next</button>
+  </form>
+</div>
