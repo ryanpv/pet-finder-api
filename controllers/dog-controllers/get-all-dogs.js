@@ -2,16 +2,6 @@ import axios from "axios";
 
 export const getAllDogs = async (req, res) => {
   const pageNumber = req.params.pageNumber ? req.params.pageNumber : 210
-
-
-    req.params = {
-      breed: undefined,
-      age: undefined,
-      color: undefined,
-      gender: undefined,
-      name: undefined,
-    }
-  
   const filters = []; // to collect query filters
 
   if (req.params.breed !== undefined) {
@@ -34,6 +24,7 @@ export const getAllDogs = async (req, res) => {
     filters.push(`&name=${ req.params.name }`)
   }
 
+
   // console.log('filters: ', filters.join('').toString());
   
   const headers = {
@@ -41,10 +32,7 @@ export const getAllDogs = async (req, res) => {
     "Authorization": `Bearer ${ req.session.accessToken }`
   }
   const query = await axios.get(`https://api.petfinder.com/v2/animals?type=dog&location=ca&limit=9&page=${ pageNumber }${ filters.join('').toString() }`, { headers: headers })
-
-
-  // const locations = await axios.get(`https://api.petfinder.com/v2/geography/countries/?limit=10&sort=name`)
-  console.log('query results: ', query.data.pagination);
+  console.log('query results: ', query.data.animals[0]);
 
   return query
 }

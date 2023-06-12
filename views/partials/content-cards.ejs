@@ -4,14 +4,14 @@
     <% data.animals.map(dog => { %>
       <div class="col-sm-4">
         <div class="card mb-3">
-          <button onclick=<%= () => console.log('clicked pic') %>>
+          <a class="btn btn-info" href=<%= `/dogs-for-adoption/dog/${ dog.id }` %>>
             <img class="card-img-top" src=<% if (dog.primary_photo_cropped !== null) { %>
              <%= dog.primary_photo_cropped.full %>
              <% } else { %>
               <%= '' %>
               <% } %> 
             alt="Card image cap">
-          </button>
+             </a>
           <div class="card-body">
             <h5 class="card-title"><%= dog.name ? dog.name : 'No Name' %></h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

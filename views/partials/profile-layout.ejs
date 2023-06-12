@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+  <div class="card" style="width: 30rem;">
+    <img class="card-img-top" src=<%= data.photos[0].full %> alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title"><strong><%= data.name %></strong></h3>
+      <p class="card-text"><%= data.description %>
+        <br>
+        <br>
+        Contact Info:
+        <br>
+        <%= data.contact.email %>
+        <br>
+        <%= data.contact.phone %>
+    </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"
+        ><strong>Breed:</strong> <%= data.breeds.secondary ? `${ data.breeds.primary } & ${ data.breeds.secondary }` : data.breeds.primary %>
+      </li>
+      <li class="list-group-item"
+        ><%= `${ data.age } - ${ data.gender } - ${ data.size } - ${ data.colors.primary }`  %>
+      </li>
+      <li class="list-group-item"
+        >Location: <%= `${ data.contact.address.city }, ${ data.contact.address.state }, ${ data.contact.address.country }` %>
+      </li>
+    </ul>
+    <div class="card-body">
+      <a href=<%= data.url %> class="card-link">Link to petfinder page</a>
+    </div>
+  </div>
+
+</div>
