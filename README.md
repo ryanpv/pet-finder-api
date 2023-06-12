@@ -1,4 +1,4 @@
-Simple backend API that uses the petfinder API for its dog and cat data. 
+Simple backend API that uses the petfinder API for its dog and cat data. Displayed with EJS.
 
 USER CASES: (for users)
 - user can search directory for dogs and cats available for adoption

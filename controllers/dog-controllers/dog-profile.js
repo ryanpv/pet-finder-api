@@ -9,13 +9,12 @@ export const dogProfile = async (req, res) => {
 
   const result = []
   Object.keys(fetchDogProfile.data.animal.environment).forEach((env) => {
-    console.log('inside: ', env);
     if (fetchDogProfile.data.animal.environment[env] === false) {
       result.push(env)
     }
   })
+  console.log('result: ', result);
 
-  console.log('env: ', result.toString());
   // console.log('query: ', fetchDogProfile.data.animal.photos);
   res.render('pages/dog-profile.ejs', {
     data: fetchDogProfile.data.animal,

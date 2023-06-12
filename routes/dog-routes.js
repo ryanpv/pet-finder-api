@@ -9,17 +9,19 @@ const dogRouter = express.Router();
 dogRouter.route('/')
   .get(dogPage)
 
-dogRouter.route('/all-dogs')
-  .get(dogPage)
+// dogRouter.route('/all-dogs')
+//   .get(dogPage)
 
-dogRouter.route('/all-dogs/page')
+dogRouter.route('/all-dogs')
   .post(pageinate)
 
-dogRouter.route('/all-dogs/page/:pageNumber')
+dogRouter.route('/all-dogs/:pageNumber')
   .get(dogPage)
 
 dogRouter.route('/dog/:animalId')
   .get(dogProfile)
 
+dogRouter.route('/search-by-name')
+  .post(dogPage)
 
 export default dogRouter;
