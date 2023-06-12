@@ -3,7 +3,17 @@
     <img class="card-img-top" src=<%= data.photos[0].full %> alt="Card image cap">
     <div class="card-body">
       <h3 class="card-title"><strong><%= data.name %></strong></h3>
-      <p class="card-text"><%= data.description %>
+      <p class="card-text"><%= data.description %><br>
+        <br>
+        Prefers home WITHOUT: <%= environment %><br>
+        <br>
+        Attributes:
+        <br>
+        Neutered ? <%= data.attributes.spayed_neutered === true ? 'YES' : 'NO' %><br>
+        House trained ? <%= data.attributes.house_trained === true ? 'YES' : 'NO' %><br>
+        Declawed ? <%= data.attributes.declawed === true ? 'YES' : 'NO' %><br>
+        Special needs ? <%= data.attributes.special_needs === true ? 'YES' : 'NO' %><br>
+        Shots current ? <%= data.attributes.shots_current === true ? 'YES' : 'NO' %><br>
         <br>
         <br>
         Contact Info:
@@ -18,7 +28,7 @@
         ><strong>Breed:</strong> <%= data.breeds.secondary ? `${ data.breeds.primary } & ${ data.breeds.secondary }` : data.breeds.primary %>
       </li>
       <li class="list-group-item"
-        ><%= `${ data.age } - ${ data.gender } - ${ data.size } - ${ data.colors.primary }`  %>
+        ><%= `${ data.age } - ${ data.gender } - ${ data.size } - ${ data.colors.primary }` %>
       </li>
       <li class="list-group-item"
         >Location: <%= `${ data.contact.address.city }, ${ data.contact.address.state }, ${ data.contact.address.country }` %>
@@ -28,5 +38,4 @@
       <a href=<%= data.url %> class="card-link">Link to petfinder page</a>
     </div>
   </div>
-
 </div>
