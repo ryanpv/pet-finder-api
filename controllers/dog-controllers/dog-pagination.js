@@ -1,4 +1,5 @@
 import axios from "axios";
+import { breedsCache } from "../filter-cache/breeds-cache.js";
 
 export const pageinate = async (req, res) => {
   try {
@@ -16,7 +17,8 @@ export const pageinate = async (req, res) => {
     }
 
     res.render('pages/dog-page.ejs', {
-      data: query.data
+      data: query.data,
+      breeds: await breedsCache(req, res)
     })
   } catch (err) {
     console.log(err);

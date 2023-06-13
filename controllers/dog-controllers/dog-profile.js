@@ -13,9 +13,9 @@ export const dogProfile = async (req, res) => {
       result.push(env)
     }
   })
-  console.log('result: ', result);
+  // console.log('result: ', result);
 
-  // console.log('query: ', fetchDogProfile.data.animal.photos);
+  console.log('query: ', fetchDogProfile.data.animal);
   res.render('pages/dog-profile.ejs', {
     data: fetchDogProfile.data.animal,
     environment: result

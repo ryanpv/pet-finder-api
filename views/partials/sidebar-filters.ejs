@@ -1,0 +1,35 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Filter List</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Filters</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form action="/dogs-for-adoption/filtered" method="POST">
+      <div>
+        <%- include('../partials/filters/size.ejs') %>
+      </div>
+  
+      <div>
+        <%- include('../partials/filters/breeds.ejs') %>
+      </div>
+  
+      <div>
+        <%- include('../partials/filters/colors.ejs') %>
+      </div>
+  
+      <div>
+        <%- include('../partials/filters/gender.ejs') %>
+      </div>
+  
+      <div>
+        <%- include('../partials/filters/age.ejs') %>
+      </div>
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+  </div>
+</div>

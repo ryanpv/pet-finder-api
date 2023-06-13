@@ -1,0 +1,15 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Breed
+  </button>
+  <ul class="dropdown-menu">
+    <div class="form-check">
+      <% breeds.map((breed) => { %>
+        <input name="breedInput" class="form-check-input" type="checkbox" value=<%= breed.name %> id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          <%= breed.name %>
+        </label>
+      <% }) %>
+    </div>
+  </ul>
+</div>
