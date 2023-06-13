@@ -13,8 +13,8 @@ export const getAllDogs = async (req, res) => {
         filters.push(`&age=${ req.params.age }`)
       }
     
-      if (req.params.color !== undefined) {
-        filters.push(`&color=${ req.params.color }`)
+      if (req.body.colorInput !== undefined) {
+        filters.push(`&color=${ req.body.colorInput }`)
       }
     
       if (req.params.gender !== undefined) {
@@ -25,14 +25,17 @@ export const getAllDogs = async (req, res) => {
         filters.push(`&name=${ req.body.petNameSearch }`)
       }
   
+      console.log('get-all-dogs query: ', req.body);
+      console.log('filters: ', filters.join('').toString());
     
     const headers = {
       "Content-type": "application/x-www-form-urlencoded",
       "Authorization": `Bearer ${ req.session.accessToken }`
     };
-    const query = await axios.get(`https://api.petfinder.com/v2/animals?type=dog&color=Gray / Blue / Silver&limit=9${ filters.join('').toString() }&page=${ pageNumber }`, { headers: headers })
+    // console.log("color: ", req.body);
+    const query = await axios.get(`https://api.petfinder.com/v2/animals?type=dog&location=ca&limit=9${ filters.join('').toString() }&page=${ pageNumber }`, { headers: headers })
     // const query = await axios.get(`https://api.petfinder.com/v2/types`, { headers: headers })
-    console.log('query results: ', query.data.animals);
+    // console.log('query results: ', query.data.animals);
 
 // console.log('query: ', query.data.types[0].colors);
   

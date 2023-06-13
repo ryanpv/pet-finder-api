@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="card" style="width: 30rem;">
-    <img class="card-img-top" src=<%= data.photos[0].full %> alt="Card image cap">
+    <img class="card-img-top" src=<%= data.photos[0] ? data.photos[0].full : null%> alt="Card image cap">
     <div class="card-body">
       <h3 class="card-title"><strong><%= data.name %></strong></h3>
       <p class="card-text"><%= data.description %><br>

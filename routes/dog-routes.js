@@ -11,6 +11,7 @@ const dogRouter = express.Router();
 
 dogRouter.route('/')
   .get(dogPage)
+  .post(dogPage)
 
 // dogRouter.route('/all-dogs')
 //   .get(dogPage)
