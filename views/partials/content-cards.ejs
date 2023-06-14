@@ -4,7 +4,7 @@
     <% data.animals.map(dog => { %>
       <div class="col-sm-4">
         <div class="card mb-3">
-          <a class="btn btn-info" href=<%= `/dogs-for-adoption/dog/${ dog.id }` %>>
+          <a class="btn btn-light" href=<%= `/dogs-for-adoption/dog/${ dog.id }` %>>
             <img class="card-img-top" src=<% if (dog.primary_photo_cropped !== null) { %>
              <%= dog.primary_photo_cropped.full %>
              <% } else { %>

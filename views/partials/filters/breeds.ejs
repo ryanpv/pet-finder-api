@@ -5,6 +5,7 @@
   <ul class="dropdown-menu">
     <div class="form-check">
       <% breeds.map((breed) => { %>
+        <%= console.log(breed) %>
         <input name="breedInput" class="form-check-input" type="checkbox" value=<%= breed.name %> id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           <%= breed.name %>
