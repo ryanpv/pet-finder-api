@@ -8,7 +8,7 @@ export const pageinate = async (req, res) => {
       "Content-type": "application/x-www-form-urlencoded",
       "Authorization": `Bearer ${ req.session.accessToken }`
     }
-
+console.log('req body for pagination: ', req.body);
     let query;
     if (req.body.previousPage) {
       query = await axios.get(`${ baseUrl }${ req.body.previousPage }`, { headers: headers })

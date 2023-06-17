@@ -8,6 +8,10 @@
   <div class="offcanvas-body">
     <form action="/dogs-for-adoption" method="POST">
       <div>
+        <input name="locationInput" type="text" placeholder="Postal Code"><br>
+        <small class="form-text text-muted">E.g US: 123456, CAN: A1B 2C3.</small>
+      </div>
+      <div>
         <%- include('../partials/filters/size.ejs') %>
       </div>
   
