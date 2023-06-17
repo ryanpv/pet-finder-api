@@ -1,7 +1,7 @@
 import axios from "axios";
 import { breedsCache } from "../filter-cache/breeds-cache.js";
 
-export const pageinate = async (req, res) => {
+export const paginate = async (req, res) => {
   try {
     const baseUrl = 'https://api.petfinder.com';
     const headers = {

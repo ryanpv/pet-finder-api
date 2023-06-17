@@ -1,6 +1,6 @@
 import express from "express";
 import { dogPage } from "../controllers/dog-controllers/dog-home-page.js";
-import { pageinate } from "../controllers/dog-controllers/dog-pagination.js";
+import { paginate } from "../controllers/dog-controllers/dog-pagination.js";
 import { dogProfile } from "../controllers/dog-controllers/dog-profile.js";
 import NodeCache from "node-cache";
 const cache = new NodeCache();
@@ -19,7 +19,7 @@ dogRouter.route('/')
 
 // Pagination route
 dogRouter.route('/all-dogs')
-  .post(pageinate)
+  .post(paginate)
 
 // Route for querying page through params
 dogRouter.route('/all-dogs/:pageNumber')
