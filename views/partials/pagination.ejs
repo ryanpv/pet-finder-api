@@ -1,15 +1,27 @@
 <div class="btn-group justify-content-right" role="group" aria-label="Basic example">
   <% if (data.pagination._links && data.pagination._links.previous) { %>
-    <form action="/dogs-for-adoption/all-dogs" method="POST">
-      <button name="previousPage" value=<%= data.pagination._links ? data.pagination._links.previous.href : null %> class="btn btn-secondary">Previous</button>
-    </form>
+    <% if (data.pagination._links.previous.href.includes("type=dog")) { %>
+      <form action="/dogs-for-adoption/all-dogs" method="POST">
+        <button name="previousPage" value=<%= data.pagination._links ? data.pagination._links.previous.href : null %> class="btn btn-secondary">Previous</button>
+      </form>
+    <% } else if (data.pagination._links.previous.href.includes("type=cat")) { %>
+      <form action="/cats-for-adoption/all-cats" method="POST">
+        <button name="previousPage" value=<%= data.pagination._links ? data.pagination._links.previous.href : null %> class="btn btn-secondary">Previous</button>
+      </form>
+    <% } %>
   <% } %>
 
   <button disabled><%= `Page: ${ data.pagination.current_page } / ${ data.pagination.total_pages }` %></button>
 
   <% if (data.pagination._links && data.pagination._links.next) { %>
-    <form action="/dogs-for-adoption/all-dogs" method="POST">
-      <button name="nextPage" value=<%= data.pagination._links && data.pagination._links.next ? data.pagination._links.next.href : null %> class="btn btn-secondary">Next</button>
-    </form>
+    <% if (data.pagination._links.next.href.includes("type=dog")) { %>
+      <form action="/dogs-for-adoption/all-dogs" method="POST">
+        <button name="nextPage" value=<%= data.pagination._links && data.pagination._links.next ? data.pagination._links.next.href : null %> class="btn btn-secondary">Next</button>
+      </form>
+      <% } else if (data.pagination._links.next.href.includes("type=cat")) { %>
+        <form action="/cats-for-adoption/all-cats" method="POST">
+          <button name="nextPage" value=<%= data.pagination._links && data.pagination._links.next ? data.pagination._links.next.href : null %> class="btn btn-secondary">Next</button>
+        </form>        
+      <% } %>
   <% } %>
 </div>

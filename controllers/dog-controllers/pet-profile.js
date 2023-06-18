@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export const dogProfile = async (req, res) => {
+export const petProfile = async (req, res) => {
+  console.log('animalid : ', req.params.animalId);
+  // if (req.params.animalId !== Number) {
+  //   return;
+  // }
   const headers = {
     "Content-type": "application/x-www-form-urlencoded",
     "Authorization": `Bearer ${ req.session.accessToken }`
@@ -16,7 +20,7 @@ export const dogProfile = async (req, res) => {
   // console.log('result: ', result);
 
   console.log('query: ', fetchDogProfile.data.animal);
-  res.render('pages/dog-profile.ejs', {
+  res.render('pages/pet-profile.ejs', {
     data: fetchDogProfile.data.animal,
     environment: result
   })

@@ -1,11 +1,11 @@
 import { breedsCache } from "../filter-cache/breeds-cache.js";
-import { getAllDogs } from "./get-all-dogs.js";
+import { getPetList } from "./get-pet-list.js";
 
-export const dogPage = async (req, res) => {
-  const fetchedDogs = await getAllDogs(req, res)
+export const petData = async (req, res) => {
+  const fetchedPetData = await getPetList(req, res)
   const fetchBreeds = await breedsCache(req, res)
   res.render('pages/dog-page.ejs', {
-    data: fetchedDogs.data,
+    data: fetchedPetData.data,
     breeds: fetchBreeds
   })
   // res.end()

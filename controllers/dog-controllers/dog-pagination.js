@@ -8,6 +8,7 @@ export const paginate = async (req, res) => {
       "Content-type": "application/x-www-form-urlencoded",
       "Authorization": `Bearer ${ req.session.accessToken }`
     }
+
 console.log('req body for pagination: ', req.body);
     let query;
     if (req.body.previousPage) {

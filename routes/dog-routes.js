@@ -1,7 +1,7 @@
 import express from "express";
-import { dogPage } from "../controllers/dog-controllers/dog-home-page.js";
+import { petData } from "../controllers/dog-controllers/pet-data.js";
 import { paginate } from "../controllers/dog-controllers/dog-pagination.js";
-import { dogProfile } from "../controllers/dog-controllers/dog-profile.js";
+import { petProfile } from "../controllers/dog-controllers/pet-profile.js";
 import NodeCache from "node-cache";
 const cache = new NodeCache();
 
@@ -9,10 +9,10 @@ const cache = new NodeCache();
 const dogRouter = express.Router();
 // dogRouter.use(petApiToken)
 
-// Homepage route
+// Homepage for DOG route
 dogRouter.route('/')
-  .get(dogPage) // Home page for dogs for adoptin
-  .post(dogPage) // Post to home for breeds filters retrieval 
+  .get(petData) // Home page for dogs for adoptin
+  .post(petData) // Post to home for breeds filters retrieval 
 
 // dogRouter.route('/all-dogs')
 //   .get(dogPage)
@@ -22,16 +22,16 @@ dogRouter.route('/all-dogs')
   .post(paginate)
 
 // Route for querying page through params
-dogRouter.route('/all-dogs/:pageNumber')
-  .get(dogPage)
+dogRouter.route('/all-dogs/page/:pageNumber')
+  .get(petData)
 
 // Query for single dog profile
-dogRouter.route('/dog/:animalId')
-  .get(dogProfile)
+dogRouter.route('/dog-by-id/:animalId')
+  .get(petProfile)
 
 // Querying dogs by name
 dogRouter.route('/search-by-name')
-  .post(dogPage)
+  .post(petData)
 
 // Dev route for clearing cache - not for Prod
 dogRouter.route('/del-cache')

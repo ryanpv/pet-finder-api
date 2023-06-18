@@ -1,19 +1,20 @@
 <div class="card-deck">
 
   <div class="row">
-    <% data.animals.map(dog => { %>
+    <% data.animals.map(pet => { %>
       <div class="col-sm-4">
         <div class="card mb-3">
-          <a class="btn btn-light" href=<%= `/dogs-for-adoption/dog/${ dog.id }` %>>
-            <img class="card-img-top" src=<% if (dog.primary_photo_cropped !== null) { %>
-             <%= dog.primary_photo_cropped.full %>
+          <a class="btn btn-light" 
+            href=<%= pet.type === 'Dog' ? `/dogs-for-adoption/dog-by-id/${ pet.id }` : pet.type === 'Cat' ? `/cats-for-adoption/cat-by-id/${ pet.id }` : '/error-link' %>>
+            <img class="card-img-top" src=<% if (pet.primary_photo_cropped !== null) { %>
+             <%= pet.primary_photo_cropped.full %>
              <% } else { %>
-              <%= '' %>
+              <%= 'data:,' %>
               <% } %> 
             alt="Card image cap">
-             </a>
+            </a>
           <div class="card-body">
-            <h5 class="card-title"><%= dog.name ? dog.name : 'No Name' %></h5>
+            <h5 class="card-title"><%= pet.name ? pet.name : 'No Name' %></h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
             <a href="#" class="btn btn-primary">Add to favourites</a>
           </div>

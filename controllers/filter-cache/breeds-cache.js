@@ -4,18 +4,20 @@ const cache = new NodeCache();
 
 export const breedsCache = async (req, res) => {
   try {
+    const petType = req.originalUrl === '/dogs-for-adoption' ? 'dog' : req.originalUrl === '/cats-for-adoption' ? 'cat' : null
     const headers = {
       "Content-type": "application/x-www-form-urlencoded",
       "Authorization": `Bearer ${ req.session.accessToken }`
     };
-    const breedsKey = 'breedKey'
+    const breedsKey = petType === 'dog' ? 'dogKey' : petType === 'cat' ? 'catkey' : null
+    console.log('breed key', breedsKey);
     const cachedResponse = cache.get(breedsKey);
     
     if (cachedResponse !== undefined) {
       console.log('returned cachedResponse');
       return cachedResponse
     } else {
-      const fetchBreeds = await axios.get(`https://api.petfinder.com/v2/types/dog/breeds`, { headers: headers })
+      const fetchBreeds = await axios.get(`https://api.petfinder.com/v2/types/${ petType }/breeds`, { headers: headers })
       console.log('no cache found');
       cache.set(breedsKey, fetchBreeds.data.breeds)
       return fetchBreeds.data.breeds
