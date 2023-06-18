@@ -8,6 +8,7 @@ const catRouter = express.Router();
 // Homepage for CAT route
 catRouter.route('/')
   .get(petData)
+  .post(petData)
 
 catRouter.route('/error-link')
   .get((req, res) => {

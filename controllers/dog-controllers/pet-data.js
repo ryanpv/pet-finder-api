@@ -6,7 +6,8 @@ export const petData = async (req, res) => {
   const fetchBreeds = await breedsCache(req, res)
   res.render('pages/dog-page.ejs', {
     data: fetchedPetData.data,
-    breeds: fetchBreeds
+    breeds: fetchBreeds,
+    reqUrl: req.originalUrl
   })
   // res.end()
 }

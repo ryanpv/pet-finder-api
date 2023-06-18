@@ -40,6 +40,10 @@ app.set('view engine', 'ejs');
 app.use('/dogs-for-adoption', dogRouter);
 app.use('/cats-for-adoption', catRouter);
 app.get('/', homePageController)
+// Temp error route
+app.get('/error-link', (req, res) => {
+  res.send(`<p>Content not available. </p><a href='/'>back to home</a>`);
+});
 app.get('/clear', (req, res) => {
   if (req.session.isAuthenticated) {
     req.session.destroy();

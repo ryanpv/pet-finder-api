@@ -4,8 +4,6 @@ export const getPetList = async (req, res) => {
   try {
     console.log(' pet list paginated: ', req.originalUrl);
     const petType = req.originalUrl.includes('dogs-for-adoption') ? 'dog' : req.originalUrl.includes('cats-for-adoption') ? 'cat' : null
-    console.log('pet type: ', petType);
-    console.log('req params: ', req.params);
     const pageNumber = req.params.pageNumber ? req.params.pageNumber : '1' // Should be string
     // res.locals.url = req.originalUrl;
     const filters = []; // to collect query filters

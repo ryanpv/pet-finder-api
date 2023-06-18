@@ -6,10 +6,13 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <form action="/dogs-for-adoption" method="POST">
+    <form 
+      action=<%= reqUrl.includes('dogs') ? "/dogs-for-adoption" : reqUrl.includes('cats') ? "/cats-for-adoption" : "/error-link" %>
+      method="POST">
       <div>
         <input name="locationInput" type="text" placeholder="Postal Code"><br>
         <small class="form-text text-muted">E.g US: 123456, CAN: A1B 2C3.</small>
+        <small class="form-text text-muted"><%= reqUrl %></small>
       </div>
       <div>
         <%- include('../partials/filters/size.ejs') %>
