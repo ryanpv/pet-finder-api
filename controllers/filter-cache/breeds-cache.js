@@ -4,7 +4,8 @@ const cache = new NodeCache();
 
 export const breedsCache = async (req, res) => {
   try {
-    const petType = req.originalUrl === '/dogs-for-adoption' ? 'dog' : req.originalUrl === '/cats-for-adoption' ? 'cat' : null
+    console.log('requrl breeds-cache.js: ', req.originalUrl);
+    const petType = req.originalUrl.includes('dogs-for-adoption') ? 'dog' : req.originalUrl.includes('cats-for-adoption') ? 'cat' : null
     const headers = {
       "Content-type": "application/x-www-form-urlencoded",
       "Authorization": `Bearer ${ req.session.accessToken }`

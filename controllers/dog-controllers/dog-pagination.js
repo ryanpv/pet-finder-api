@@ -19,7 +19,8 @@ console.log('req body for pagination: ', req.body);
 
     res.render('pages/dog-page.ejs', {
       data: query.data,
-      breeds: await breedsCache(req, res)
+      breeds: await breedsCache(req, res),
+      reqUrl: req.originalUrl
     })
   } catch (err) {
     console.log(err);
