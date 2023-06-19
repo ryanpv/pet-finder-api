@@ -1,2 +1,4 @@
 node_modules
 .env
+firebase/firebase-client/firebase-config.js
+firebase/firebase-admin/firebase-admin-config.js
