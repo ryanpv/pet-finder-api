@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config.js";
 import cookieParser from "cookie-parser";
+import { appAdmin } from './firebase/firebase-admin/firebase-admin-config.js';
 import dogRouter from "./routes/dog-routes.js";
 import catRouter from "./routes/cat-routes.js";
 import { mongooseConn } from "./db/db-conn.js";
@@ -9,6 +10,7 @@ import session from "express-session";
 import connectMongoDBSession from "connect-mongodb-session";
 import { petApiToken } from "./middleware/pet-api-auth.js";
 import { homePageController } from "./controllers/homePage.js";
+import { signUpRequest } from "./controllers/firebase-controllers/sign-up-request.js";
 
 
 const app = express();
@@ -44,6 +46,7 @@ app.get('/', homePageController)
 app.get('/error-link', (req, res) => {
   res.send(`<p>Content not available. </p><a href='/'>back to home</a>`);
 });
+
 app.get('/clear', (req, res) => {
   if (req.session.isAuthenticated) {
     req.session.destroy();
@@ -52,7 +55,20 @@ app.get('/clear', (req, res) => {
   } else {
     res.send("no ssesion authenticated")
   }
-})
+});
+
+// User sign up page for firebase acccount
+app.get('/sign-up-page', (req, res) => {
+  res.render('pages/sign-up-page.ejs')
+});
+
+// Firebase sign up route
+app.post('/sign-up-request', signUpRequest);
+
+// Login page
+app.get('/login', (req, res) => {
+  res.render('pages/login-page.ejs')
+});
 
 
 app.listen(PORT, () => {
