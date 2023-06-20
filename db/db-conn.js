@@ -25,5 +25,17 @@ export const petSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  petPhotoSrc: {
+    type: String,
+    required: false
+  },
+  petId: {
+    type: String,
+    required: true
+  }
 });
 
+// Create index for the schema
+petSchema.index({ '$**': 'text' });
+
+export const Pets = mongoose.model("Favourite_pets", petSchema);

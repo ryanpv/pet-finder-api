@@ -15,7 +15,7 @@ export const petApiToken = async (req, res, next) => {
       const testQ = await axios.post('https://api.petfinder.com/v2/oauth2/token', body, { headers: headers })
 
       req.session.isAuthenticated = true;
-      req.session.accessToken = testQ.data.access_token
+      req.session.petApi_accessToken = testQ.data.access_token
       req.session.tokenExpiry = Date.now() + 3600 * 1000
 
       // console.log('token res: ', testQ.data);

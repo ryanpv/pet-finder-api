@@ -1,0 +1,15 @@
+<% const show = (selector) => {
+  const queryTags = document.querySelectorAll(selector)
+
+  for (let i = 0; i < queryTags.length; i++) {
+    queryTags[i].style.display = 'block'
+  };
+}; %>
+
+<% const hide = (selector) => {
+  const queryTags = document.querySelectorAll(selector)
+
+  for (let i = 0; i < queryTags.length; i++) {
+    queryTags[i].style.display = 'none'
+  };
+}; %>

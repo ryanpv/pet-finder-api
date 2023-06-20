@@ -13,6 +13,9 @@ import { homePageController } from "./controllers/homePage.js";
 import { signUpRequest } from "./controllers/firebase-controllers/sign-up-request.js";
 import { loginRequest } from "./controllers/firebase-controllers/login-request.js";
 import { verifyFirebaseToken } from "./middleware/verify-token.js";
+import { postFavourites } from "./controllers/db-controllers/post-favourite-pets.js";
+import { getFavourites } from "./controllers/db-controllers/get-user-favourites.js";
+import { petProfile } from "./controllers/dog-controllers/pet-profile.js";
 
 
 const app = express();
@@ -87,7 +90,16 @@ app.get('/logout', (req, res) => {
   res.send(`<p>LOGGED OUT!</p><a href='/'>back to home</a>`);
 });
 
+// Get pet by ID
+app.get('/pet-by-id/:animalId', petProfile)
+
 app.get('/check-user', verifyFirebaseToken)
+
+app.get('/user/favourites-list', getFavourites)
+
+
+app.post('/check-post', postFavourites)
+app.get('/get-favourites', getFavourites)
 
 
 app.listen(PORT, () => {

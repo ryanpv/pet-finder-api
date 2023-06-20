@@ -45,7 +45,7 @@ export const getPetList = async (req, res) => {
     
     const headers = {
       "Content-type": "application/x-www-form-urlencoded",
-      "Authorization": `Bearer ${ req.session.accessToken }`
+      "Authorization": `Bearer ${ req.session.petApi_accessToken }`
     };
 
     const query = await axios.get(`https://api.petfinder.com/v2/animals?type=${ petType }&limit=9${ filters.join('').toString() }&page=${ pageNumber }`, { headers: headers })

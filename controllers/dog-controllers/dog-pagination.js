@@ -6,7 +6,7 @@ export const paginate = async (req, res) => {
     const baseUrl = 'https://api.petfinder.com';
     const headers = {
       "Content-type": "application/x-www-form-urlencoded",
-      "Authorization": `Bearer ${ req.session.accessToken }`
+      "Authorization": `Bearer ${ req.session.petApi_accessToken }`
     }
 
 console.log('req body for pagination: ', req.body);

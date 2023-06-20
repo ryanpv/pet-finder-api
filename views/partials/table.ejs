@@ -1,0 +1,10 @@
+<% savedPets && savedPets.forEach((pet) => { %>
+  <tr>
+    <td>
+      <img src="<%= pet.petPhotoSrc %>" />
+      </td>
+    <td><%= pet.petName %></td>
+    <td>
+      <a href="/pet-by-id/<%= pet.petId %>"><%= pet.petId %></a>
+  </tr>
+<% }) %>

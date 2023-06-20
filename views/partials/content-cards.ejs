@@ -1,11 +1,12 @@
-<div class="card-deck">
+<%- include('../partials/functions.ejs') %>
 
+<div class="card-deck">
   <div class="row">
-    <% data.animals.map(pet => { %>
+    <% data.animals.forEach((pet) => { %>
       <div class="col-sm-4">
         <div class="card mb-3">
           <a class="btn btn-light" 
-            href=<%= pet.type === 'Dog' ? `/dogs-for-adoption/dog-by-id/${ pet.id }` : pet.type === 'Cat' ? `/cats-for-adoption/cat-by-id/${ pet.id }` : '/error-link' %>>
+            href="/pet-by-id/<%= pet.id %>">
             <img class="card-img-top" src=<% if (pet.primary_photo_cropped !== null) { %>
              <%= pet.primary_photo_cropped.full %>
              <% } else { %>
@@ -15,12 +16,32 @@
             </a>
           <div class="card-body">
             <h5 class="card-title"><%= pet.name ? pet.name : 'No Name' %></h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Add to favourites</a>
+            <p class="card-text">Click <%= pet.name ? pet.name : 'No Name' %>'s photo for more information.</p>
+            <div class="content unauthorized" style="display: block;">
+              <p><a href='/login'>Login</a> to add to favourites.</p>
+            </div>
+            <div class="content authorized" style="display: none;">
+              <form action="/check-post" method="POST" onsubmit="submitter(e);return false">
+                <button name="petId" class="btn btn-primary" type="submit" value=<%- pet.id %>>Add to favourites</button>
+                <input name="petName" class="btn btn-primary" type="hidden" value=<%- pet.name %> />
+                <input name="petType" class="btn btn-primary" type="hidden" value=<%- pet.type %> />
+                <input name="petPhotoSrc" class="btn btn-primary" type="hidden" value=<%- pet.primary_photo_cropped !== null ? pet.primary_photo_cropped.small : ''%> />
+              </form>
+            </div>
           </div>
         </div>
       </div>
-  
     <% }) %>
   </div>
 </div>
+
+<script>
+  function submitter(e) {
+    e.preventDefault();
+  }
+    console.log('cookies: ', document.cookie);
+    if (document.cookie.includes('currentUser')) {
+    hide('.content.unauthorized');
+    show('.content.authorized');
+  }
+</script>

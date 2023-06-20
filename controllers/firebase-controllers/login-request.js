@@ -14,7 +14,6 @@ export const loginRequest = async (req, res) => {
     const userEmail = userData.email;
     const access_token = userData.accessToken;
     const refresh_token = userData.refreshToken;
-console.log('user: ', userData);
     // Storing some user data in session
     req.session.userAuthenticated = true;
     req.session.user = userEmail;

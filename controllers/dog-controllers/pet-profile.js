@@ -7,7 +7,7 @@ export const petProfile = async (req, res) => {
   // }
   const headers = {
     "Content-type": "application/x-www-form-urlencoded",
-    "Authorization": `Bearer ${ req.session.accessToken }`
+    "Authorization": `Bearer ${ req.session.petApi_accessToken }`
   }
   const fetchDogProfile = await axios.get(`https://api.petfinder.com/v2/animals/${ req.params.animalId }`, { headers: headers })
 
@@ -22,7 +22,8 @@ export const petProfile = async (req, res) => {
   console.log('query: ', fetchDogProfile.data.animal);
   res.render('pages/pet-profile.ejs', {
     data: fetchDogProfile.data.animal,
-    environment: result
+    environment: result,
+    reqUrl: req.originalUrl
   })
   // res.end()
 }

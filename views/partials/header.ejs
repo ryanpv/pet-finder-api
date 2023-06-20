@@ -12,9 +12,16 @@
     </li>
     <li class="nav-item">
       <form method="GET">
-        <a class="nav-link content authorized" role="button" type="submit" value="2" href="/cats-for-adoption">Cats</a>
+        <a class="nav-link" role="button" type="submit" value="2" href="/cats-for-adoption">Cats</a>
       </form>
-    </li>  
+    </li>
+    <div class="content authorized" style="display: none;">
+      <li class="nav-item">
+        <form method="GET">
+          <a class="nav-link content authorized" role="button" type="submit" value="2" href="/user/favourites-list">Favourites</a>
+        </form>
+      </li>  
+    </div>
   </ul>
 
   <% if (reqUrl === '/dogs-for-adoption' || reqUrl === '/cats-for-adoption') { %>
@@ -29,7 +36,19 @@
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       </form>
     </div>
-  <% } %>
+    <% } else if (reqUrl === '/dogs-for-adoption/search-by-name'|| reqUrl === '/cats-for-adoption/search-by-name') { %>
+      <div>
+        <form action="<%= reqUrl %>" method="POST">
+          <input 
+            name="petNameSearch" 
+            class="form-control mr-sm-2" 
+            type="search" 
+            placeholder="Search by pet name" 
+            aria-label="Search">
+        </form>
+      </div>
+    <% } %>
+   
   
   <div class="content unauthorized" style="">
     <form method="GET">
