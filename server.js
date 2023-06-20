@@ -61,7 +61,9 @@ app.get('/clear', (req, res) => {
 
 // User sign up page for firebase acccount
 app.get('/sign-up-page', (req, res) => {
-  res.render('pages/sign-up-page.ejs')
+  res.render('pages/sign-up-page.ejs', {
+    reqUrl: req.originalUrl
+  });
 });
 
 // Firebase sign up route
@@ -69,7 +71,9 @@ app.post('/sign-up-request', signUpRequest);
 
 // Login page
 app.get('/login', (req, res) => {
-  res.render('pages/login-page.ejs')
+  res.render('pages/login-page.ejs', {
+    reqUrl: req.originalUrl
+  })
 });
 
 // Login request

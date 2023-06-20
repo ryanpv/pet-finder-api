@@ -19,13 +19,17 @@ catRouter.route('/error-link')
 catRouter.route('/all-cats')
   .post(paginate)
 
-
+// Direct page request through params
 catRouter.route('/all-cats/page/:pageNumber')
   .get(petData)
 
 // Query for single cat profile
 catRouter.route('/cat-by-id/:animalId')
   .get(petProfile);
+
+// Query for pet by name
+catRouter.route('/search-by-name')
+  .post(petData);
 
 
 
