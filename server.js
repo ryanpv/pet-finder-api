@@ -11,6 +11,7 @@ import connectMongoDBSession from "connect-mongodb-session";
 import { petApiToken } from "./middleware/pet-api-auth.js";
 import { homePageController } from "./controllers/homePage.js";
 import { signUpRequest } from "./controllers/firebase-controllers/sign-up-request.js";
+import { loginRequest } from "./controllers/firebase-controllers/login-request.js";
 
 
 const app = express();
@@ -37,10 +38,10 @@ app.use(cookieParser());
 app.use(petApiToken)
 app.set('view engine', 'ejs');
 
-
-
+// Routers
 app.use('/dogs-for-adoption', dogRouter);
 app.use('/cats-for-adoption', catRouter);
+
 app.get('/', homePageController)
 // Temp error route
 app.get('/error-link', (req, res) => {
@@ -68,6 +69,15 @@ app.post('/sign-up-request', signUpRequest);
 // Login page
 app.get('/login', (req, res) => {
   res.render('pages/login-page.ejs')
+});
+
+// Login request
+app.post('/login-request', loginRequest)
+
+// Logout route
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  req.clearCookie('currentUser');
 });
 
 
