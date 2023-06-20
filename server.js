@@ -12,6 +12,7 @@ import { petApiToken } from "./middleware/pet-api-auth.js";
 import { homePageController } from "./controllers/homePage.js";
 import { signUpRequest } from "./controllers/firebase-controllers/sign-up-request.js";
 import { loginRequest } from "./controllers/firebase-controllers/login-request.js";
+import { verifyFirebaseToken } from "./middleware/verify-token.js";
 
 
 const app = express();
@@ -77,8 +78,12 @@ app.post('/login-request', loginRequest)
 // Logout route
 app.get('/logout', (req, res) => {
   req.session.destroy();
-  req.clearCookie('currentUser');
+  res.clearCookie('currentUser');
+
+  res.send(`<p>LOGGED OUT!</p><a href='/'>back to home</a>`);
 });
+
+app.get('/check-user', verifyFirebaseToken)
 
 
 app.listen(PORT, () => {

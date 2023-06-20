@@ -59,3 +59,27 @@
   &nbsp;
 
 </nav>
+
+<script>
+  const cookies = document.cookie;
+  const show = (selector) => {
+    const queryTags = document.querySelectorAll(selector)
+
+    for (let i = 0; i < queryTags.length; i++) {
+      queryTags[i].style.display = 'block'
+    };
+  };
+
+  const hide = (selector) => {
+    const queryTags = document.querySelectorAll(selector)
+
+    for (let i = 0; i < queryTags.length; i++) {
+      queryTags[i].style.display = 'none'
+    };
+  };
+
+  if (cookies.includes('currentUser')) {
+    hide('.content.unauthorized');
+    show('.content.authorized');
+  }
+</script>

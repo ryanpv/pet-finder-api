@@ -10,7 +10,7 @@ export const signUpRequest = async (req, res) => {
       })
 
     await getAuth()
-      .setCustomUserClaims(createUserAccount.uid, { endUser: true });
+      .setCustomUserClaims(createUserAccount.uid, { admin: true });
       
       res.send(`<p>SUCCESS</p> <a href='/login'>Go to LOGIN</a>`);
   } catch (err) {
