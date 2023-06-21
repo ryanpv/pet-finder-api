@@ -77,9 +77,13 @@ app.post('/sign-up-request', signUpRequest);
 
 // Login page
 app.get('/login', (req, res) => {
-  res.render('pages/login-page.ejs', {
-    reqUrl: req.originalUrl
-  })
+  if (req.session.userAuthenticated) {
+    res.redirect('/')
+  } else {
+    res.render('pages/login-page.ejs', {
+      reqUrl: req.originalUrl
+    });
+  }
 });
 
 // Login request
@@ -97,7 +101,7 @@ app.get('/logout', (req, res) => {
 app.get('/pet-by-id/:animalId', petProfile)
 
 // Get user's favourited pets list
-app.get('/user/favourites-list', verifyFirebaseToken,getFavourites);
+app.get('/user/favourites-list', verifyFirebaseToken, getFavourites);
 
 // Delete user's single favourited pet
 app.post('/remove-pet-request', verifyFirebaseToken, deletePet)

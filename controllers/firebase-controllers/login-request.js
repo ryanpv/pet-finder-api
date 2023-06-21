@@ -5,6 +5,7 @@ export const loginRequest = async (req, res) => {
   try {
     const userEmailInput = req.body.userEmailInput;
     const userPasswordInput = req.body.passwordInput;
+    
     // User sign in Request with email&password
     const userLoginRequest = await signInWithEmailAndPassword(firebaseAuth, userEmailInput, userPasswordInput);
   
@@ -14,6 +15,7 @@ export const loginRequest = async (req, res) => {
     const userEmail = userData.email;
     const access_token = userData.accessToken;
     const refresh_token = userData.refreshToken;
+
     // Storing some user data in session
     req.session.userAuthenticated = true;
     req.session.user = userEmail;

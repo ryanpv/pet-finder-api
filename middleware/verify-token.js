@@ -16,7 +16,7 @@ console.log('verifying firebase token');
       req.session.destroy();
       res.clearCookie('currentUser');
 
-      res.send(`<p>User unverified, please try again</p><a href='/login'>back to LOGIN</a>`)
+      res.send(`<p>User unverified, please log in and try again</p><a href='/login'>back to LOGIN</a>`)
     }
   } catch (err) {
     res.send(`<p>Unable to verify user, please try again</p><a href='/login'>back to LOGIN</a>`)

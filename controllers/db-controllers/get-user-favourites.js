@@ -10,6 +10,6 @@ export const getFavourites = async (req, res) => {
     })
   } catch (error) {
     console.log(error);
-    res.end();
+    res.status(400).send(`<p>Failed to fetch favourites list. Try refreshing page/logging in again.</p> <a href='/login'>back to login</a>`);
   }
 }

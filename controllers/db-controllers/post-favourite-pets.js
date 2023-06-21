@@ -10,10 +10,8 @@ export const postFavourites = async (req, res) => {
       petPhotoSrc: req.body.petPhotoSrc,
     };
 
-    console.log('body: ', body);
     const savePetData = new Pets(body)
     const checkDuplicateSaves = await Pets.exists({ userId: req.session.userId, petId: req.body.petId });
-  console.log('dupe: ', checkDuplicateSaves);
     
     if (checkDuplicateSaves === null) {
       const saveData = await savePetData.save();
@@ -27,6 +25,5 @@ export const postFavourites = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.end()
-    
   }
 }

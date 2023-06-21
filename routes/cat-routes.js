@@ -10,11 +10,6 @@ catRouter.route('/')
   .get(petData)
   .post(petData)
 
-catRouter.route('/error-link')
-  .get((req, res) => {
-    res.send(`<p>Content not available. </p><a href='/'>back to home</a>`);
-  })
-
 // Pagination Route for cats
 catRouter.route('/all-cats')
   .post(paginate)
@@ -30,9 +25,6 @@ catRouter.route('/cat-by-id/:animalId')
 // Query for pet by name
 catRouter.route('/search-by-name')
   .post(petData);
-
-
-
 
 
 export default catRouter; 
