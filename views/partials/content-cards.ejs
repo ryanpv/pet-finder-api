@@ -21,7 +21,7 @@
               <p><a href='/login'>Login</a> to add to favourites.</p>
             </div>
             <div class="content authorized" style="display: none;">
-              <form action="/check-post" method="POST" onsubmit="submitter(e);return false">
+              <form action="/save-to-favourites" method="POST" onsubmit="submitter(e);return false">
                 <button name="petId" class="btn btn-primary" type="submit" value=<%- pet.id %>>Add to favourites</button>
                 <input name="petName" class="btn btn-primary" type="hidden" value=<%- pet.name %> />
                 <input name="petType" class="btn btn-primary" type="hidden" value=<%- pet.type %> />

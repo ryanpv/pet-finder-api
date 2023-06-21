@@ -6,5 +6,11 @@
     <td><%= pet.petName %></td>
     <td>
       <a href="/pet-by-id/<%= pet.petId %>"><%= pet.petId %></a>
+    </td>
+    <td>
+      <form action="/remove-pet-request" method="POST">
+        <button name="_id" class="btn btn-secondary btn-sm" type="submit" value=<%= pet._id %>>remove</button>
+      </form>  
+    </td>
   </tr>
 <% }) %>

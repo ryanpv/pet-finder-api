@@ -16,6 +16,7 @@ import { verifyFirebaseToken } from "./middleware/verify-token.js";
 import { postFavourites } from "./controllers/db-controllers/post-favourite-pets.js";
 import { getFavourites } from "./controllers/db-controllers/get-user-favourites.js";
 import { petProfile } from "./controllers/dog-controllers/pet-profile.js";
+import { deletePet } from "./controllers/db-controllers/delete-pet.js";
 
 
 const app = express();
@@ -39,6 +40,8 @@ app.use(session({
   store: store
 }))
 app.use(cookieParser());
+
+// Check petfinder api token - acquires new one if expired/not available
 app.use(petApiToken)
 app.set('view engine', 'ejs');
 
@@ -87,19 +90,20 @@ app.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('currentUser');
 
-  res.send(`<p>LOGGED OUT!</p><a href='/'>back to home</a>`);
+  res.send(`<p>SUCCESSFULLY LOGGED OUT!</p><a href='/'>back to home</a>`);
 });
 
 // Get pet by ID
 app.get('/pet-by-id/:animalId', petProfile)
 
-app.get('/check-user', verifyFirebaseToken)
+// Get user's favourited pets list
+app.get('/user/favourites-list', verifyFirebaseToken,getFavourites);
 
-app.get('/user/favourites-list', getFavourites)
+// Delete user's single favourited pet
+app.post('/remove-pet-request', verifyFirebaseToken, deletePet)
 
-
-app.post('/check-post', postFavourites)
-app.get('/get-favourites', getFavourites)
+// Save pet to user's favourites list
+app.post('/save-to-favourites', postFavourites)
 
 
 app.listen(PORT, () => {

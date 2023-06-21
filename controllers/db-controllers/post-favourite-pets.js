@@ -18,7 +18,9 @@ export const postFavourites = async (req, res) => {
     if (checkDuplicateSaves === null) {
       const saveData = await savePetData.save();
       console.log('save data: ', saveData);
-      res.end()
+      
+      // Redirect back to same page since form directs to the POST route
+      res.redirect('back');
     } else {
       res.send({ message: "Already saved to favourites." });
     }

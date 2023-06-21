@@ -33,12 +33,22 @@
           type="search" 
           placeholder="Search by pet name" 
           aria-label="Search">
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       </form>
     </div>
     <% } else if (reqUrl === '/dogs-for-adoption/search-by-name'|| reqUrl === '/cats-for-adoption/search-by-name') { %>
       <div>
         <form action="<%= reqUrl %>" method="POST">
+          <input 
+            name="petNameSearch" 
+            class="form-control mr-sm-2" 
+            type="search" 
+            placeholder="Search by pet name" 
+            aria-label="Search">
+        </form>
+      </div>
+    <% } else if (reqUrl === '/dogs-for-adoption/all-dogs'|| reqUrl === '/cats-for-adoption/search-by-name/all-cats') { %>
+      <div>
+        <form action="<%= reqUrl.includes('dogs') ? '/dogs-for-adoption/search-by-name' : '/cats-for-adoption/search-by-name' %>" method="POST">
           <input 
             name="petNameSearch" 
             class="form-control mr-sm-2" 

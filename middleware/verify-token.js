@@ -10,7 +10,7 @@ export const verifyFirebaseToken = async (req, res, next) => {
       // console.log('decoded token: ', decodeFirebaseToken);
       // Pass verified user data to the next function
       req.user = decodeFirebaseToken;
-
+console.log('verifying firebase token');
       next();
     } else {
       req.session.destroy();

@@ -34,9 +34,13 @@
         <%- include('../partials/filters/age.ejs') %>
       </div>
 
-      <button type="submit">Submit</button>
-
+      <button type="submit" class="btn btn-primary">Submit</button>
+      
     </form>
-
+    <form 
+      action=<%= reqUrl.includes('dogs') ? "/dogs-for-adoption" : reqUrl.includes('cats') ? "/cats-for-adoption" : "/error-link" %>
+      method="POST">
+      <button type="submit" class="btn btn-primary" name="clear" value="true">Clear Filter(s)</button>
+    </form>
   </div>
 </div>
