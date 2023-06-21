@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const getPetList = async (req, res) => {
   try {
-    console.log(' pet list paginated: ', req.originalUrl);
     const petType = req.originalUrl.includes('dogs-for-adoption') ? 'dog' : req.originalUrl.includes('cats-for-adoption') ? 'cat' : null
     const pageNumber = req.params.pageNumber ? req.params.pageNumber : '1' // Should be string
 

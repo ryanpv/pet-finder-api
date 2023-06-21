@@ -2,8 +2,7 @@ import { Pets } from "../../db/db-conn.js";
 
 export const deletePet = async (req, res) => {
   try {
-    const deletePetReqest = await Pets.findByIdAndDelete({ _id: req.body._id })
-    console.log('delete ', deletePetReqest);
+    await Pets.findByIdAndDelete({ _id: req.body._id })
 
     res.redirect('/user/favourites-list')
   } catch (error) {

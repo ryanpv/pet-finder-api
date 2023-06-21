@@ -15,7 +15,7 @@ import { loginRequest } from "./controllers/firebase-controllers/login-request.j
 import { verifyFirebaseToken } from "./middleware/verify-token.js";
 import { postFavourites } from "./controllers/db-controllers/post-favourite-pets.js";
 import { getFavourites } from "./controllers/db-controllers/get-user-favourites.js";
-import { petProfile } from "./controllers/dog-controllers/pet-profile.js";
+import { petProfile } from "./controllers/pet-controllers/pet-profile.js";
 import { deletePet } from "./controllers/db-controllers/delete-pet.js";
 
 

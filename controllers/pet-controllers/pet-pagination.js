@@ -9,7 +9,6 @@ export const paginate = async (req, res) => {
       "Authorization": `Bearer ${ req.session.petApi_accessToken }`
     }
 
-console.log('req body for pagination: ', req.body);
     let query;
     if (req.body.previousPage) {
       query = await axios.get(`${ baseUrl }${ req.body.previousPage }`, { headers: headers })

@@ -7,10 +7,8 @@ export const verifyFirebaseToken = async (req, res, next) => {
 
     if (userAuthenticated && firebaseToken) {
       const decodeFirebaseToken = await getAuth().verifyIdToken(firebaseToken);
-      // console.log('decoded token: ', decodeFirebaseToken);
-      // Pass verified user data to the next function
       req.user = decodeFirebaseToken;
-console.log('verifying firebase token');
+
       next();
     } else {
       req.session.destroy();

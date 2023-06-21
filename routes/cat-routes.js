@@ -1,7 +1,7 @@
 import express from "express";
-import { petData } from "../controllers/dog-controllers/pet-data.js";
-import { paginate } from "../controllers/dog-controllers/dog-pagination.js";
-import { petProfile } from "../controllers/dog-controllers/pet-profile.js";
+import { petData } from "../controllers/pet-controllers/pet-data.js";
+import { paginate } from "../controllers/pet-controllers/pet-pagination.js";
+import { petProfile } from "../controllers/pet-controllers/pet-profile.js";
 
 const catRouter = express.Router();
 
